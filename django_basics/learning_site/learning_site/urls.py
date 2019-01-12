@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-# from django.conf.urls import url, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
-from courses.views import get_courses
 
 urlpatterns = [
     re_path(r'^courses/', include('courses.urls')),
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'^$', views.hello_world),
+    re_path(r'^$', views.hello_world, name='hello-world'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
